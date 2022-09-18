@@ -15,7 +15,7 @@ class ContentType(enum.Enum):
     assignment = 3
 
 
-class Course(Timestamp,Base):
+class Course(Timestamp, Base):
     __tablename__ = 'courses'
 
     id = Column(Integer, primary_key=True, index=True)
@@ -40,9 +40,8 @@ class Section(Timestamp, Base):
     content_blocks = relationship('ContentBlock', back_populates='section')
 
 
-class ContentBlock(Timestamp,Base):
+class ContentBlock(Timestamp, Base):
     __tablename__ = 'content_blocks'
-
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String(200), nullable=False)
@@ -55,8 +54,8 @@ class ContentBlock(Timestamp,Base):
     section = relationship(Section, back_populates="content_blocks")
     completed_content_blocks = relationship('CompletedContentBlock', back_populates="content_block")
 
-class StudentCourse(Timestamp,Base):
 
+class StudentCourse(Timestamp, Base):
     __tablename__ = "student_courses"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -68,8 +67,7 @@ class StudentCourse(Timestamp,Base):
     course = relationship('Course', back_populates="student_courses")
 
 
-class CompletedContentBlock(Timestamp,Base):
-
+class CompletedContentBlock(Timestamp, Base):
     __tablename__ = "completed_content_blocks"
 
     id = Column(Integer, primary_key=True, index=True)
