@@ -1,11 +1,10 @@
-from sqlalchemy import delete
+from sqlalchemy import delete, update
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse
 
 from db.models.courses import Course
-from db.models.user import User
+from db.models.users import User
 from schemas import courses_schemas
 from schemas.users_schemas import CreateUser
 
@@ -32,7 +31,7 @@ async def delete_select_user(db: AsyncSession, user_id: int):
     user = delete(User).where(User.id == user_id)
     await db.execute(user)
     await db.commit()
-    return JSONResponse(content={'Message': 'User deleted'})
+    return JSONResponse(status_code=200, content={'Message': 'User deleted'})
 
 
 async def new_course(db: AsyncSession, course: courses_schemas.CreateCourse):
@@ -50,3 +49,18 @@ async def list_of_courses(db: AsyncSession):
 async def get_course(db: AsyncSession, course_id: int):
     course = await db.execute(select(Course).where(Course.id == course_id))
     return course.scalar_one_or_none()
+
+
+async def delete_course(course_id: int, db: AsyncSession):
+    course = delete(Course).where(Course.id == course_id)
+    await db.execute(course)
+    await db.commit()
+    return JSONResponse(status_code=200, content={'Message': 'Course deleted'})
+
+
+async def edit_course(course_id: int, course: courses_schemas.CourseBase, db: AsyncSession):
+    obj_in = course.dict(exclude_unset=True)
+    course_update = update(Course).where(Course.id == course_id).values(**obj_in)
+    await db.execute(course_update)
+    await db.commit()
+    return course

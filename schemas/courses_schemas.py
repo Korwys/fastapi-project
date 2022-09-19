@@ -1,12 +1,13 @@
 from datetime import datetime
+from typing import Optional
 
 from pydantic import BaseModel
 
 
 class CourseBase(BaseModel):
-    title: str
+    title: str | None
     description: str | None
-    user_id: int
+    user_id: int | None
 
 
 class CreateCourse(CourseBase):

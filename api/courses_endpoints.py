@@ -1,12 +1,10 @@
 import fastapi
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
-from sqlalchemy.orm import Session
 
 from db.db_setup import async_get_db, get_db
 from schemas import courses_schemas
-from services.crud import list_of_courses, new_course, get_course
+from services.crud import list_of_courses, new_course, get_course, delete_course, edit_course
 
 router = fastapi.APIRouter()
 
@@ -26,3 +24,12 @@ async def get_retrieve_course(course_id: int, db: AsyncSession = Depends(async_g
     return await get_course(course_id=course_id, db=db)
 
 
+@router.delete('/courses/{course_id}', response_model=courses_schemas.Course)
+async def delete_selected_course(course_id: int, db: AsyncSession = Depends(async_get_db)):
+    return await delete_course(course_id=course_id, db=db)
+
+
+@router.put('/courses/{course_id}', response_model=courses_schemas.CourseBase)
+async def edit_selected_course(course_id: int, course: courses_schemas.CourseBase,
+                               db: AsyncSession = Depends(async_get_db)):
+    return await edit_course(course_id=course_id, course=course, db=db)

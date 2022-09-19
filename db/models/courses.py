@@ -6,7 +6,7 @@ from sqlalchemy_utils import URLType
 
 from db.db_setup import Base
 from db.models.mixins import Timestamp
-from db.models.user import User
+from db.models.users import User
 
 
 class ContentType(enum.Enum):

@@ -7,6 +7,7 @@ class BaseUser(BaseModel):
     email: str
     role: int
 
+
 class CreateUser(BaseUser):
     ...
 
