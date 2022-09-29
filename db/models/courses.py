@@ -51,7 +51,7 @@ class ContentBlock(Timestamp, Base):
     content = Column(Text, nullable=True)
     section_id = Column(Integer, ForeignKey("sections.id"), nullable=False)
 
-    section = relationship(Section, back_populates="content_blocks")
+    section = relationship('Section', back_populates="content_blocks")
     completed_content_blocks = relationship('CompletedContentBlock', back_populates="content_block")
 
 
@@ -63,7 +63,7 @@ class StudentCourse(Timestamp, Base):
     course_id = Column(Integer, ForeignKey("courses.id"), nullable=False)
     completed = Column(Boolean, default=False)
 
-    student = relationship(User, back_populates="student_courses")
+    student = relationship('User', back_populates="student_courses")
     course = relationship('Course', back_populates="student_courses")
 
 

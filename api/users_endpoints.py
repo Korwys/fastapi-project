@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from db.db_setup import get_db, async_get_db
 from schemas import users_schemas
-from services.crud import create_new_user, users_list, single_user, delete_select_user
+from services.crud.users import create_new_user, users_list, single_user, delete_select_user
 
 router = fastapi.APIRouter()
 

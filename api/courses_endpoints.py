@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from db.db_setup import async_get_db, get_db
 from schemas import courses_schemas
-from services.crud import list_of_courses, new_course, get_course, delete_course, edit_course
+from services.crud.courses import new_course, list_of_courses, get_course, delete_course, edit_course
 
 router = fastapi.APIRouter()
 
