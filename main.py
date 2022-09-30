@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from api import users_endpoints, courses_endpoints, sections_endpoints, contentblock_endpoints, studentcourse_endpoints
+from api import users_endpoints, courses_endpoints, sections_endpoints, contentblock_endpoints, studentcourse_endpoints, completeblock_endpoints
 from db.db_setup import engine, async_engine
 from db.models import users, courses
 
@@ -27,6 +27,7 @@ app.include_router(courses_endpoints.router)
 app.include_router(sections_endpoints.router)
 app.include_router(contentblock_endpoints.router)
 app.include_router(studentcourse_endpoints.router)
+app.include_router(completeblock_endpoints.router)
 
 if __name__ == '__main__':
     uvicorn.run(app, host="0.0.0.0", port=8000)
