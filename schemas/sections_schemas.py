@@ -13,10 +13,17 @@ class CreateSection(BaseSection):
     ...
 
 
-class Section(BaseSection):
+class SectionUpdate(BaseSection):
+    title: str
+
+
+class SectionInDBBase(BaseSection):
     id: int
-    created_at: datetime
-    updated_at: datetime
+    course_id: int
 
     class Config:
         orm_mode = True
+
+
+class Section(SectionInDBBase):
+    pass

@@ -1,6 +1,4 @@
 from datetime import datetime
-from typing import Optional
-
 from pydantic import BaseModel
 
 
@@ -10,14 +8,22 @@ class CourseBase(BaseModel):
     user_id: int | None
 
 
-class CreateCourse(CourseBase):
+class CourseCreate(CourseBase):
     ...
 
 
-class Course(CourseBase):
+class CourseUpdate(CourseBase):
+    title: str
+
+
+class CourseInDBBase(CourseBase):
     id: int
     created_at: datetime
     updated_at: datetime
 
     class Config:
         orm_mode = True
+
+
+class Course(CourseInDBBase):
+    pass

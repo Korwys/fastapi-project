@@ -1,17 +1,25 @@
 from pydantic import BaseModel
 
 
-class BaseStudentCourse(BaseModel):
+class StudentCourseBase(BaseModel):
     student_id: int | None
     course_id: int | None
 
 
-class CreateStudentCourse(BaseStudentCourse):
+class StudentCourseCreate(StudentCourseBase):
     ...
 
 
-class StudentCourse(BaseStudentCourse):
+class StudentCourseUpdate(StudentCourseBase):
+    ...
+
+
+class StudentCourseInDBBase(StudentCourseBase):
     id: int
 
     class Config:
         orm_mode = True
+
+
+class StudentCourse(StudentCourseInDBBase):
+    pass

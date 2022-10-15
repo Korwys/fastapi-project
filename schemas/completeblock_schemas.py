@@ -1,7 +1,7 @@
 from pydantic import BaseModel, HttpUrl
 
 
-class BaseCompleteContentBlock(BaseModel):
+class CompletedContentBlockBase(BaseModel):
     student_id: int | None
     content_block_id: int | None
     url: HttpUrl | None
@@ -9,12 +9,20 @@ class BaseCompleteContentBlock(BaseModel):
     grade: int | None
 
 
-class CreateCompleteContentBlock(BaseCompleteContentBlock):
+class CompletedContentBlockCreate(CompletedContentBlockBase):
     ...
 
 
-class CompleteContentBlock(BaseCompleteContentBlock):
+class CompletedContentBlockUpdate(CompletedContentBlockBase):
+    ...
+
+
+class CompletedContentBlockInDBBase(CompletedContentBlockBase):
     id: int
 
     class Config:
         orm_mode = True
+
+
+class CompletedContentBlock(CompletedContentBlockInDBBase):
+    pass

@@ -22,12 +22,12 @@ app = FastAPI(
     },
 )
 
-app.include_router(users_endpoints.router)
-app.include_router(courses_endpoints.router)
-app.include_router(sections_endpoints.router)
-app.include_router(contentblock_endpoints.router)
-app.include_router(studentcourse_endpoints.router)
-app.include_router(completeblock_endpoints.router)
+app.include_router(users_endpoints.router, tags=['users'], prefix='/users')
+app.include_router(courses_endpoints.router,tags=['courses'], prefix='/courses')
+app.include_router(sections_endpoints.router, tags=['sections'], prefix='/sections')
+app.include_router(contentblock_endpoints.router, tags=['contentblocks'], prefix='/contentblocks')
+app.include_router(studentcourse_endpoints.router, tags=['studentcourses'], prefix='/studentcourses')
+app.include_router(completeblock_endpoints.router, tags=['completeblocks'], prefix='/completeblocks')
 
 if __name__ == '__main__':
     uvicorn.run(app, host="0.0.0.0", port=8000)

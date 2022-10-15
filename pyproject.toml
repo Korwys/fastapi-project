@@ -17,6 +17,7 @@ alembic = "^1.8.1"
 psycopg2 = "^2.9.3"
 asyncpg = "^0.26.0"
 SQLAlchemy-Utils = "^0.38.3"
+fastapi-users = {extras = ["sqlalchemy"], version = "^10.1.5"}
 
 [tool.poetry.dev-dependencies]
 

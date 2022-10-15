@@ -3,21 +3,29 @@ from pydantic import BaseModel, HttpUrl
 from db.models.courses import ContentType
 
 
-class BaseContentBlock(BaseModel):
-    title: str | None
-    description: str | None
+class ContentBlockBase(BaseModel):
+    title: str
+    description: str
     type: ContentType | None
-    url: HttpUrl | None
-    content: str | None
-    section_id: int | None
+    url: HttpUrl
+    content: str
+    section_id: int
 
 
-class CreateContentBlock(BaseContentBlock):
+class ContentBlockCreate(ContentBlockBase):
     ...
 
 
-class ContentBlock(BaseContentBlock):
+class ContentBlockUpdate(ContentBlockBase):
+    ...
+
+
+class ContentBlockInDBBase(ContentBlockBase):
     id: int
 
     class Config:
         orm_mode = True
+
+
+class ContentBlock(ContentBlockInDBBase):
+    ...
