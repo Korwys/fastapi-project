@@ -10,7 +10,7 @@ router = fastapi.APIRouter()
 
 
 @router.post("/user", response_model=users_schemas.User)
-async def create_user(user: users_schemas.CreateUser, db: AsyncSession = Depends(async_get_db)):
+async def create_user(user: users_schemas.UserCreate, db: AsyncSession = Depends(async_get_db)):
     return await create_new_user(db=db, user=user)
 
 

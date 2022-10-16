@@ -17,7 +17,7 @@ class User(Timestamp, Base):
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True, nullable=False)
-    role = Column(Enum(Role))
+    password = Column(String, nullable=False)
     is_active = Column(Boolean, default=False)
 
     profile = relationship('Profile', back_populates='owner', uselist=False)
@@ -28,9 +28,11 @@ class User(Timestamp, Base):
 class Profile(Timestamp,Base):
     __tablename__ = 'profiles'
 
+
     id = Column(Integer, primary_key=True)
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
+    role = Column(Enum(Role))
     bio = Column(Text, nullable=True)
     new = Column(Integer, nullable=False)
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)

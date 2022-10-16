@@ -4,11 +4,11 @@ from sqlalchemy.future import select
 from starlette.responses import JSONResponse
 
 from db.models.users import User
-from schemas.users_schemas import CreateUser
+from schemas.users_schemas import UserCreate
 
 
-async def create_new_user(db: AsyncSession, user: CreateUser):
-    db_user = User(email=user.email, role=user.role)
+async def create_new_user(db: AsyncSession, user: UserCreate):
+    db_user = User(email=user.email, password = user.password, role=user.role)
     db.add(db_user)
     await db.commit()
     await db.refresh(db_user)

@@ -3,7 +3,8 @@ from schemas.completeblock_schemas import CompletedContentBlockCreate, Completed
 from services.crud.base import CRUDBase
 
 
-class CRUDCompletedContentBlock(CRUDBase[CompletedContentBlock, CompletedContentBlockCreate, CompletedContentBlockUpdate]):
+class CRUDCompletedContentBlock(
+    CRUDBase[CompletedContentBlock, CompletedContentBlockCreate, CompletedContentBlockUpdate]):
     ...
 
 
