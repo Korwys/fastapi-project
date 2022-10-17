@@ -18,16 +18,16 @@ class User(Timestamp, Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True, nullable=False)
     password = Column(String, nullable=False)
-    is_active = Column(Boolean, default=False)
+    is_active = Column(Boolean, default=True)
+    is_superuser = Column(Boolean, default=False)
 
     profile = relationship('Profile', back_populates='owner', uselist=False)
     student_courses = relationship("StudentCourse", back_populates="student")
     student_content_blocks = relationship("CompletedContentBlock", back_populates="student")
 
 
-class Profile(Timestamp,Base):
+class Profile(Timestamp, Base):
     __tablename__ = 'profiles'
-
 
     id = Column(Integer, primary_key=True)
     first_name = Column(String(50), nullable=False)

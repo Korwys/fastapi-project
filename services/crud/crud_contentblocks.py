@@ -6,6 +6,7 @@ from services.crud.base import CRUDBase, CreateSchemaType, ModelType
 
 
 class CRUDContentBlock(CRUDBase[ContentBlock, ContentBlockCreate, ContentBlockUpdate]):
+    """Класс наследует все методы CREATE,READ,UPDATE,DELETE. Реализует CRUD операции над моделью ContenBlock"""
 
     async def create(self, db: AsyncSession, *, obj_in: CreateSchemaType) -> ModelType:
         db_content = self.model(title=obj_in.title, description=obj_in.description,

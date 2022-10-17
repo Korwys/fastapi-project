@@ -5,6 +5,7 @@ from services.crud.base import CRUDBase
 
 class CRUDCompletedContentBlock(
     CRUDBase[CompletedContentBlock, CompletedContentBlockCreate, CompletedContentBlockUpdate]):
+    """Класс наследует все методы CREATE,READ,UPDATE,DELETE. Реализует CRUD операции над моделью CompletedContenBlock"""
     ...
 
 

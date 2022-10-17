@@ -4,6 +4,7 @@ from services.crud.base import CRUDBase
 
 
 class CRUDStudentCourses(CRUDBase[StudentCourse, StudentCourseCreate, StudentCourseUpdate]):
+    """Класс наследует все методы CREATE,READ,UPDATE,DELETE. Реализует CRUD операции над моделью StudenCourse"""
     ...
 
 

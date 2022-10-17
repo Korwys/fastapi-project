@@ -22,7 +22,7 @@ app = FastAPI(
     },
 )
 
-app.include_router(users_endpoints.router, tags=['users'], prefix='/users')
+app.include_router(users_endpoints.router, tags=['users'])
 app.include_router(courses_endpoints.router,tags=['courses'], prefix='/courses')
 app.include_router(sections_endpoints.router, tags=['sections'], prefix='/sections')
 app.include_router(contentblock_endpoints.router, tags=['contentblocks'], prefix='/contentblocks')
