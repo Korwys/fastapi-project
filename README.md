@@ -1,8 +1,9 @@
-LMS FastAPI
-This is learning system where teachers can manage students,and students can see their courses and feedbacks
+##LMS FastAPI
+
+#This is learning system where teachers can manage students,and students can see their courses and feedbacks
 Implemented user authentication by JWT.
 
-Stack:
+#Stack:
 Fast API
 Python 3.10
 Poetry
